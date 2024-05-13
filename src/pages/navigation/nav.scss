@@ -1,0 +1,93 @@
+:root {
+  --nav-pad-x: clamp(10px, 3vw, 40px);
+  --nav-columns: auto 1fr fit-content 1fr auto;
+  --nav-items-display: grid;
+  --nav-j-c: auto;
+  --nav-span-bg: transparent;
+}
+
+.nav {
+  display: grid;
+  width: clamp(0px, calc(90vw - 2 * var(--nav-pad-x)), 720px);
+  grid-template-columns: var(--nav-columns);
+  min-height: clamp(40px, 5vw, 50px);
+  border-radius: 10rem;
+  background-color: var(--header);
+  backdrop-filter: blur(10px);
+  border: 2px solid var(--color-1);
+  position: fixed;
+  justify-self: center;
+  top: clamp(0px, 5vw, 50px);
+  display: grid;
+  align-items: center;
+  align-content: center;
+  padding: 10px var(--nav-pad-x);
+  grid-auto-flow: column;
+  overflow: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding: 0 var(--nav-pad-x);
+  justify-content: var(--nav-j-c);
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  > span {
+    font-size: clamp(24px, 3vw, 30px);
+    background-color: var(--nav-span-bg);
+    padding: 8px;
+    border-radius: 50%;
+    cursor: pointer;
+    text-align: center;
+    transition: 0.2s ease-in-out;
+
+    &:hover {
+      background-color: var(--color-1-alpha);
+      color: var(--color-1);
+    }
+  }
+
+  &-items {
+    display: var(--nav-items-display);
+    grid-auto-flow: column;
+    // justify-self: center;
+    // padding: 0 calc(var(--nav-pad-x) / 1.5);
+    > div {
+      padding: 0 clamp(10px, 1.2vw, 20px);
+      font-size: clamp(14px, 2.9vw, 20px);
+      font-weight: 500;
+      color: var(--text-color);
+      opacity: 0.8;
+      transition: 0.2s ease-in-out;
+      cursor: pointer;
+
+      &:hover {
+        opacity: 1;
+        color: #000;
+      }
+
+      &:active {
+        transform: scale(0.9);
+      }
+    }
+  }
+  &-name {
+    font-size: clamp(22px, 2vw, 36px);
+    letter-spacing: 0.05rem;
+    color: var(--color-1);
+    font-family: "Poetsen One", sans-serif;
+    font-weight: 400;
+    user-select: none;
+    padding: 0 clamp(0px, 1.5vw, 22px);
+    scroll-snap-align: center;
+  }
+}
+
+@media screen and (max-width: 560px) {
+  :root {
+    --nav-items-display: none;
+    --nav-j-c: space-between;
+    --nav-span-bg: #296d6315;
+    --color-1-alpha: #296d6330;
+  }
+}
