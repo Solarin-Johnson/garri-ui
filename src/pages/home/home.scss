@@ -13,12 +13,12 @@
     justify-content: center;
     &-2 {
       img {
-        width: clamp(200px, 45%, 700px) !important;
-        margin-bottom: clamp(100px, 5vw, 200px);
+        width: clamp(300px, 45%, 700px) !important;
+        margin-bottom: clamp(80px, 5vw, 200px);
       }
     }
     img {
-      width: clamp(300px, 60%, 800px);
+      width: clamp(350px, 60%, 800px);
     }
   }
   &-title {
@@ -33,7 +33,7 @@
       max-width: clamp(300px, 70vw, 800px);
       justify-self: center;
       line-height: 1.5;
-      font-size: clamp(24px, 5vw, 62px);
+      font-size: clamp(30px, 5vw, 62px);
       text-align: center;
       font-family: "Freeman", sans-serif;
       font-weight: 600;
@@ -45,7 +45,7 @@
     }
     &-3 {
       div {
-        padding-bottom: clamp(120px, 15%, 180px) !important;
+        // padding-bottom: clamp(120px, 15%, 180px) !important;
       }
     }
   }
