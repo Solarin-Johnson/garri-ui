@@ -9,7 +9,7 @@ import image3 from "../../images/Garri-legacy-2.png";
 import imageCard1 from "../../images/garri-honey.webp";
 import imageCard2 from "../../images/garri-bowl.webp";
 
-export default function Home({ pageIndex }) {
+export default function Home({ pageIndex, currentIndex }) {
   const parallax = useRef(null);
   const [index, setIndex] = useState(0);
   const [isMobile, setIsMobile] = useState(isMobileDevice());
@@ -27,13 +27,17 @@ export default function Home({ pageIndex }) {
   }, [index, isMobile]);
 
   useEffect(() => {
-    setIndex(pageIndex);
-  }, [index, pageIndex]);
+    parallax && !isMobile && parallax.current.scrollTo(index);
+  }, [index, isMobile, currentIndex]);
 
   useEffect(() => {
     setIndex(pageIndex);
-    parallax && !isMobile && parallax.current.scrollTo(pageIndex);
   }, [pageIndex, isMobile]);
+  console.log(index);
+
+  const handleClick = (i) => {
+    parallax && !isMobile && currentIndex(i);
+  };
 
   function isMobileDevice() {
     return (
@@ -152,24 +156,32 @@ export default function Home({ pageIndex }) {
         <ParallaxLayer
           style={{ display: "flex" }}
           onClick={() => {
-            !isMobile && parallax.current.scrollTo(1);
             setIndex(1);
+            handleClick(1);
           }}
         ></ParallaxLayer>
         <ParallaxLayer
           offset={1}
           style={{ display: "flex" }}
           onClick={() => {
-            !isMobile && parallax.current.scrollTo(2);
             setIndex(2);
+            handleClick(2);
           }}
         ></ParallaxLayer>
         <ParallaxLayer
           offset={2}
           style={{ display: "flex" }}
           onClick={() => {
-            !isMobile && parallax.current.scrollTo(0);
+            setIndex(3);
+            handleClick(3);
+          }}
+        ></ParallaxLayer>
+        <ParallaxLayer
+          offset={3}
+          style={{ display: "flex" }}
+          onClick={() => {
             setIndex(0);
+            handleClick(0);
           }}
         ></ParallaxLayer>
       </Parallax>

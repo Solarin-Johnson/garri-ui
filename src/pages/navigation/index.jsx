@@ -3,7 +3,6 @@ import "./nav.scss";
 
 export default function Navigation({ index }) {
   const menuItems = ["Home", "Ingredient", "Serving", "Try It!"];
-  console.log(index);
   return (
     <div className="nav">
       <span class="material-symbols-rounded">shopping_bag</span>

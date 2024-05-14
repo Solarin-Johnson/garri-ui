@@ -97,7 +97,14 @@
   }
 }
 
-@media screen and (max-width: 520px) {
+@media screen and (min-width: 2240px) {
+  .home {
+    &-title {
+      div {
+        padding-bottom: clamp(100px, 5vw, 150px) !important;
+      }
+    }
+  }
   .footer {
     // &-image {
     //   flex-direction: column;
@@ -110,10 +117,10 @@
     //   img {
     //   }
     // }
-    // &-title {
-    //   div {
-    //     padding-bottom: 30px;
-    //   }
-    // }
+    &-title {
+      div {
+        padding-bottom: clamp(30px, 4vw, 100px);
+      }
+    }
   }
 }

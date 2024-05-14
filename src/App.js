@@ -8,7 +8,7 @@ function App() {
   return (
     <div className="container">
       <Navigation index={(e) => setIndex(e)} />
-      <Home pageIndex={index} />
+      <Home pageIndex={index} currentIndex={(e) => setIndex(e)} />
     </div>
   );
 }
