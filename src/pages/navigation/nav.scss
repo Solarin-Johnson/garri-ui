@@ -24,11 +24,11 @@
   align-content: center;
   padding: 10px var(--nav-pad-x);
   grid-auto-flow: column;
-  overflow: auto;
-  scroll-snap-type: x mandatory;
+  overflow: hidden;
   scroll-padding: 0 var(--nav-pad-x);
   justify-content: var(--nav-j-c);
   z-index: 100;
+  animation: zoom-out 2.4s;
 
   &::-webkit-scrollbar {
     display: none;
@@ -43,6 +43,7 @@
     text-align: center;
     transition: 0.2s ease-in-out;
     user-select: none;
+    max-width: clamp(25px, 5vw, 30px);
 
     &:hover {
       background-color: var(--color-2-alpha);
@@ -83,6 +84,23 @@
     user-select: none;
     padding: 0 clamp(0px, 1.5vw, 22px);
     scroll-snap-align: center;
+  }
+}
+
+@keyframes zoom-out {
+  from {
+    transform: scale(1.4);
+    opacity: 0;
+  }
+  45% {
+    transform: scale(1.4);
+    opacity: 0;
+  }
+  65% {
+    opacity: 1;
+  }
+  to {
+    transform: scale(1);
   }
 }
 

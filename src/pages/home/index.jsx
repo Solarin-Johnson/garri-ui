@@ -60,6 +60,8 @@ export default function Home({ pageIndex, currentIndex }) {
           left: "0",
           width: "100%",
           overflow: isMobile ? "hidden" : "auto",
+          animation: "zoom 2s",
+          animationTimingFunction: "cube-bezier(0.645, 0.045, 0.355, 1)",
         }}
       >
         <ParallaxLayer
@@ -86,13 +88,12 @@ export default function Home({ pageIndex, currentIndex }) {
 
         <ParallaxLayer
           offset={0}
-          speed={speed(0)}
+          speed={speed(-0.1)}
           factor={4}
           style={{
             backgroundImage: !isMobile && `url(${bgImage})`,
             backgroundSize: "cover",
             backgroundPosition: "50%",
-            opacity: 0.8,
           }}
         />
 
@@ -125,7 +126,7 @@ export default function Home({ pageIndex, currentIndex }) {
         {/* Bg Slow */}
         <ParallaxLayer
           offset={0}
-          speed={speed(0.4)}
+          speed={speed(0.6)}
           factor={4}
           style={{
             backgroundImage: !isMobile && `url(${bgImageDraw})`,
