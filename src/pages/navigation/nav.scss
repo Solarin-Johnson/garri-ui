@@ -45,8 +45,8 @@
     user-select: none;
 
     &:hover {
-      background-color: var(--color-1-alpha);
-      color: var(--color-1);
+      background-color: var(--color-2-alpha);
+      color: var(--color-2);
     }
   }
 
@@ -90,7 +90,7 @@
   :root {
     --nav-items-display: none;
     --nav-j-c: space-between;
-    --nav-span-bg: #296d6315;
-    --color-1-alpha: #296d6330;
+    --nav-span-bg: #52101015;
+    --color-2-alpha: #52101030;
   }
 }

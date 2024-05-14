@@ -16,7 +16,7 @@ export default function Home({ pageIndex, currentIndex }) {
 
   useEffect(() => {
     const handleResize = () => {
-      parallax && !isMobile && parallax.current.scrollTo(index);
+      parallax && parallax.current.scrollTo(index);
     };
 
     window.addEventListener("resize", handleResize);
@@ -27,7 +27,7 @@ export default function Home({ pageIndex, currentIndex }) {
   }, [index, isMobile]);
 
   useEffect(() => {
-    parallax && !isMobile && parallax.current.scrollTo(index);
+    parallax && parallax.current.scrollTo(index);
   }, [index, isMobile, currentIndex]);
 
   useEffect(() => {
@@ -36,7 +36,7 @@ export default function Home({ pageIndex, currentIndex }) {
   console.log(index);
 
   const handleClick = (i) => {
-    parallax && !isMobile && currentIndex(i);
+    parallax && currentIndex(i);
   };
 
   function isMobileDevice() {
@@ -47,15 +47,20 @@ export default function Home({ pageIndex, currentIndex }) {
   }
 
   const speed = (x) => {
-    return isMobile ? x : x;
+    return x;
   };
 
   return (
-    <div className="home-container">
+    <div className="home-container" id={isMobile ? "mobile" : "pc"}>
       <Parallax
         ref={parallax}
         pages={4}
-        style={{ top: "0", left: "0", width: "100%" }}
+        style={{
+          top: "0",
+          left: "0",
+          width: "100%",
+          overflow: isMobile ? "hidden" : "auto",
+        }}
       >
         <ParallaxLayer
           offset={1}
@@ -105,7 +110,7 @@ export default function Home({ pageIndex, currentIndex }) {
           speed={speed(0.15)}
           className="home-image home-image-2"
         >
-          <img src={image2} alt="" />
+          <img src={image2} alt="" loading="lazy" />
         </ParallaxLayer>
 
         {/* Third page */}
@@ -123,7 +128,7 @@ export default function Home({ pageIndex, currentIndex }) {
           speed={speed(0.4)}
           factor={4}
           style={{
-            backgroundImage: `url(${bgImageDraw})`,
+            backgroundImage: !isMobile && `url(${bgImageDraw})`,
             backgroundSize: "cover",
             backgroundPosition: !isMobile ? "40%" : "center",
             opacity: 0.85,
@@ -148,7 +153,7 @@ export default function Home({ pageIndex, currentIndex }) {
             <img src={imageCard2} alt="" />
           </span>
         </ParallaxLayer>
-        <ParallaxLayer offset={3} speed={speed(-0.5)} className="footer-title">
+        <ParallaxLayer offset={3} speed={speed(0)} className="footer-title">
           <div>Try Garri now!</div>
         </ParallaxLayer>
 
